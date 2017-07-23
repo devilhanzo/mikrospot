@@ -15,31 +15,36 @@
 
 	<div id="wrap">
 
-		<nav class="navbar navbar-fixed-top navbar-dark bg-inverse">
-			<!--<a class="navbar-barnd" href="#">$(identity)</a>-->
-			<a class="navbar-brand" href="$(link-login)">$(identity)</a>
-			<ul class="nav navbar-nav">
-				<li class="nav-item">
-					<a class="nav-link" href="$(link-status)">Status</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="logout?erase-cookie=true">Logout</a>
-				</li>
-			</ul>
+				<nav class="navbar navbar-toggleable navbar-inverse bg-inverse">
+			<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
+			 aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+			<a class="navbar-brand" href="$(link-login)"><img src="assets/brand/bootstrap-solid.svg" width="30" height="30" alt=""> $(identity)</a>
+			<div class="collapse navbar-collapse" id="navbarNav">
+				<ul class="navbar-nav">
+					<li class="nav-item active">
+						<a class="nav-link" href="$(link-status)">Status</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="logout?erase-cookie=true">Logout</a>
+					</li>
+				</ul>
+			</div>
 		</nav>
 
 
 		<div class="container">
 			<div class="row">
 				<div class="alert alert-success">
-					คุณได้รับการยืนยันตัวบุคคลแล้ว
+					You have successful login.
 				</div> $(if link-redirect)
                 <div class="alert alert-info">
-					คลิก <a href="$(link-redirect)" target="_blank">$(link-redirect)</a> เพื่อดำเนินการต่อ
+					Click <a href="$(link-redirect)" target="_blank">$(link-redirect)</a> to continue.
 				</div>
                 $(endif)
                 <div class="alert alert-info">
-					ตรวจสอบสถานะการใช้งาน และ ออนไลน์ต่อเนื่อง <a href="$(link-status)">คลิกที่นี่</a>
+					Check your usage statistic <a href="$(link-status)">Here</a>
 				</div>
 			</div>
 		</div>
@@ -48,7 +53,6 @@
 	<div id="footer">
 		<div class="container">
 			<p class="text-muted">Powered by Mikrotik Router OS</p>
-			<!--<p class="text-muted">ติดต่อสอบถาม <i class="fa fa-phone-square fa-fw"></i>xxx-xxxxxx ต่อ xxxx,xxxx</p>-->
 		</div>
 	</div>
 

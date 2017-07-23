@@ -15,17 +15,22 @@
 
 	<div id="wrap">
 
-		<nav class="navbar navbar-fixed-top navbar-dark bg-inverse">
-			<!--<a class="navbar-barnd" href="#">$(identity)</a>-->
-			<a class="navbar-brand" href="$(link-login)">$(identity)</a>
-			<ul class="nav navbar-nav">
-				<li class="nav-item">
-					<a class="nav-link" href="$(link-status)">Status</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="logout?erase-cookie=true">Logout</a>
-				</li>
-			</ul>
+		<nav class="navbar navbar-toggleable navbar-inverse bg-inverse">
+			<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
+			 aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+			<a class="navbar-brand" href="$(link-login)"><img src="assets/brand/bootstrap-solid.svg" width="30" height="30" alt=""> $(identity)</a>
+			<div class="collapse navbar-collapse" id="navbarNav">
+				<ul class="navbar-nav">
+					<li class="nav-item active">
+						<a class="nav-link" href="$(link-status)">Status</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="logout?erase-cookie=true">Logout</a>
+					</li>
+				</ul>
+			</div>
 		</nav>
 
 		<div class="container">
@@ -34,7 +39,7 @@
 				<div class="alert alert-danger">$(error)</div>
 				$(endif)
 
-				<div class="alert alert-info">กรุณาระบุตัวตนเพื่อใช้งาน internet</div>
+				<div class="alert alert-info">Please log on to use the internet hotspot service</div>
 
 				$(if trial == 'yes')
 				<div class="alert alert-info">
@@ -42,7 +47,7 @@
 				</div>
 				$(endif)
 			</div>
-		
+
 
 			<div class="container">
 				<form class="form-signin" id="loginForm" role="form" action="$(link-login-only)" method="post">
@@ -70,7 +75,6 @@
 	<div id="footer">
 		<div class="container">
 			<p class="text-muted">Powered by Mikrotik Router OS</p>
-			<!--<p class="text-muted">ติดต่อสอบถาม <i class="fa fa-phone-square fa-fw"></i>xxx-xxxxxx ต่อ xxxx,xxxx</p>-->
 		</div>
 	</div>
 
@@ -80,40 +84,39 @@
 	<script type="text/javascript" src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script> $(if chap-id)
 	<script type="text/javascript" src="node_modules/js-md5/src/md5.js"></script>
 	<script type="text/javascript">
-        $('#loginForm').submit(function () {
-            var password = $('#inputPassword');
-            password.val(hexMD5('$(chap-id)' + password.val() + '$(chap-challenge)'));
-        });
-    </script> $(endif)
+		$('#loginForm').submit(function () {
+			var password = $('#inputPassword');
+			password.val(hexMD5('$(chap-id)' + password.val() + '$(chap-challenge)'));
+		});
+	</script> $(endif)
 	<script>
-            $(function() {
- 
-                if (localStorage.chkbx && localStorage.chkbx != '') {
-                    $('#remember_me').attr('checked', 'checked');
-                    $('#inputLogin').val(localStorage.usrname);
-                    $('#inputPassword').val(localStorage.pass);
-                } else {
-                    $('#remember_me').removeAttr('checked');
-                    $('#inputLogin').val('');
-                    $('#inputPassword').val('');
-                }
- 
-                $('#remember_me').click(function() {
- 
-                    if ($('#remember_me').is(':checked')) {
-                        // save username and password
-                        localStorage.usrname = $('#inputLogin').val();
-                        localStorage.pass = $('#inputPassword').val();
-                        localStorage.chkbx = $('#remember_me').val();
-                    } else {
-                        localStorage.usrname = '';
-                        localStorage.pass = '';
-                        localStorage.chkbx = '';
-                    }
-                });
-            });
- 
-        </script>
+		$(function () {
+
+			if (localStorage.chkbx && localStorage.chkbx != '') {
+				$('#remember_me').attr('checked', 'checked');
+				$('#inputLogin').val(localStorage.usrname);
+				$('#inputPassword').val(localStorage.pass);
+			} else {
+				$('#remember_me').removeAttr('checked');
+				$('#inputLogin').val('');
+				$('#inputPassword').val('');
+			}
+
+			$('#remember_me').click(function () {
+
+				if ($('#remember_me').is(':checked')) {
+					// save username and password
+					localStorage.usrname = $('#inputLogin').val();
+					localStorage.pass = $('#inputPassword').val();
+					localStorage.chkbx = $('#remember_me').val();
+				} else {
+					localStorage.usrname = '';
+					localStorage.pass = '';
+					localStorage.chkbx = '';
+				}
+			});
+		});
+	</script>
 </body>
 
 </html>
