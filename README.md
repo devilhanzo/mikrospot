@@ -1,5 +1,5 @@
 # mikrospot
-Bootstrap theme for mikrotik hotspot web interface.
+Bootstrap theme for Mikrotik hotspot login page.
 
 Installation</br>
 1. npm install</br>
